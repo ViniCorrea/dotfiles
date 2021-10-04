@@ -1,3 +1,5 @@
+source $HOME/.bash_aliases
+
 eval "$(starship init zsh)"
 
 # key bindings
@@ -27,4 +29,4 @@ bindkey "\e[F" end-of-line
 bindkey '\^i' expand-or-complete-prefix
 
 
-alias dotfiles='/usr/bin/git --git-dir=/home/vinicius/.cfg/ --work-tree=/home/vinicius'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
