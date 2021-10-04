@@ -1,0 +1,20 @@
+/* Rofi config file */
+configuration {
+    font: "FiraCode Nerd Font Mono 12";
+    modi:               "drun,windowcd,combi,filebrowser";
+    show-icons: true;
+    display-window: "Window";
+    display-drun: "Search";
+    display-combi: "rofi";
+
+    matching:           "fuzzy";
+    sorting-method:     "fzf";
+    sort:               true;
+
+}
+
+@theme "oxide"
+
+listview {
+    lines: 12;
+}

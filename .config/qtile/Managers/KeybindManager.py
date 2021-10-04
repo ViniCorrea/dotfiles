@@ -190,7 +190,7 @@ def get_keybinds():
     # Idea taken from Augusto Nicola's Dotfiles => https://github.com/AugustoNicola/dotfiles
     group_names = [
         ("SYS", {"label": "ﬦ", "layout": "columns"}),
-        ("DEV", {"label": "", "layout": "columns"}),
+        ("VER", {"label": "", "layout": "columns"}),
         ("WWW", {"label": "", "layout": "columns"}),
         ("DIS", {"label": "ﭮ", "layout": "columns"}),
         ("TEAMS", {"label": "", "layout": "columns"}),

@@ -112,7 +112,7 @@ def widgets_group_box():
             **groupbox_defaults
         ),
         widget.GroupBox(
-            visible_groups=["DEV"],
+            visible_groups=["VER"],
             font="FiraCode Nerd Font",
             fontsize=17,
             **groupbox_defaults
