@@ -1,9 +1,17 @@
 # My Dotfiles
+For now you need to install all "Todo" manual, in the future I will do the install.sh to install everything that is necessary. 
 
 ## Requirements
 
 - Git
 - Curl
+
+## Todo
+Install:
+- Zsh
+- Oh My Zsh
+- Qtile
+- rofi
 
 ## Install
 
