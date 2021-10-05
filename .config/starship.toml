@@ -53,9 +53,6 @@ symbol = " "
 [git_state]
 format = '\(:[$state( $progress_current/$progress_total)]($style)\)'
 
-[python]
-format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
-
 [hostname]
 ssh_only = true
 format =  "歷[$hostname](bold red) "
@@ -70,7 +67,62 @@ fish_style_pwd_dir_length = 0
 [cmd_duration]
 min_time = 500
 show_milliseconds = true
-format = "took [ $duration](bold yellow)"
+format = ' \[[ $duration]($style)\]'
 
 [directory.substitutions]
 "~" = "🏠"
+
+[aws]
+format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+
+[cmake]
+format = '\[[$symbol($version)]($style)\]'
+
+[docker_context]
+symbol = " "
+format = '\[[$symbol$context]($style)\]'
+
+[elixir]
+symbol = " "
+format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
+
+[gcloud]
+format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
+
+[helm]
+format = '\[[$symbol($version)]($style)\]'
+
+[java]
+symbol = " "
+format = '\[[$symbol($version)]($style)\]'
+
+[julia]
+symbol = " "
+format = '\[[$symbol($version)]($style)\]'
+
+[kubernetes]
+symbol = "ﴱ"
+format = '\[[$symbol$context( \($namespace\))]($style)\]'
+
+[nix_shell]
+symbol = " "
+format = '\[[$symbol$state( \($name\))]($style)\]'
+
+[nodejs]
+symbol = ""
+format = '\[[$symbol($version)]($style)\]'
+
+[lua]
+format = '\[[$symbol($version)]($style)\]'
+
+[package]
+format = '\[[$symbol$version]($style)\]'
+
+[php]
+format = '\[[$symbol($version)]($style)\]'
+
+[python]
+format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+
+[vagrant]
+format = '\[[$symbol($version)]($style)\]'
