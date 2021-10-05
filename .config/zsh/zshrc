@@ -1,0 +1,30 @@
+# Oh My Zsh
+source $HOME/.config/zsh/oh-my-zsh
+
+# Environments variables
+source $HOME/.config/zsh/exports
+
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+source $HOME/.config/zsh/aliases
+source $HOME/.config/zsh/functions
+
+# History control.
+# Don't bother with history if we can't write to the file,
+# like if we're using sudo.
+if [ -w ~/.zsh_history -o -w ~ ]; then
+  SAVEHIST=10000 # linus saved on disk
+  HISTSIZE=10000 # lines loaded in memory
+  HISTFILE=~/.zsh_history
+  setopt histignorealldups # Substitute commands in the prompt
+  setopt sharehistory # Share the same history between all shells
+fi
+
+# Other shell options
+setopt autocd # assume "cd" when a command is a directory
+
+
+eval "$(starship init zsh)"

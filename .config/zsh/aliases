@@ -8,6 +8,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=always'
     alias fgrep='fgrep --color=always'
     alias egrep='egrep --color=always'
+
+    alias less="less -R" # make less accept color codes and re-output them
 fi
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -39,6 +41,7 @@ alias df='df -h'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias mkdir='mkdir -p -v'
 
 ######################
 ######### cd #########
@@ -48,31 +51,26 @@ alias cd..='cd ..'
 alias ..='cd ..;pwd'
 alias ...='cd ../..;pwd'
 alias ....='cd ../../..;pwd'
-# cd into the old directory
-alias bd='cd "$OLDPWD"'
+alias bd='cd "$OLDPWD"' # cd into the old directory
 
 #alias tree='tree --dirsfirst -F'
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 
-
-alias mkdir='mkdir -p -v'
-
 ###########################
 ## Other helpful aliases ##
 ###########################
-
-alias jan='cal -m 01'
-alias feb='cal -m 02'
-alias mar='cal -m 03'
-alias apr='cal -m 04'
-alias may='cal -m 05'
-alias jun='cal -m 06'
-alias jul='cal -m 07'
-alias aug='cal -m 08'
-alias sep='cal -m 09'
-alias oct='cal -m 10'
-alias nov='cal -m 11'
-alias dec='cal -m 12'
+alias jan='cal jan -3'
+alias feb='cal feb -3'
+alias mar='cal mar -3'
+alias apr='cal apr -3'
+alias may='cal may -3'
+alias jun='cal jun -3'
+alias jul='cal jul -3'
+alias aug='cal aug -3'
+alias sep='cal sep -3'
+alias oct='cal oct -3'
+alias nov='cal nov -3'
+alias dec='cal dec -3'
 
 function hg() {
     history | grep "$1";
@@ -88,3 +86,7 @@ alias pw='bash -c '"'"'echo `tr -dc $([ $# -gt 1 ] && echo $2 || echo "A-Za-z0-9
 
 # Show all logs in /var/log
 alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
+
+alias colortest="curl -s https://gist.githubusercontent.com/HaleTom/89ffe32783f89f403bba96bd7bcd1263/raw/ | bash"
+
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
