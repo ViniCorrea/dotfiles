@@ -12,6 +12,7 @@ Install:
 - Oh My Zsh
 - Qtile
 - rofi
+- Kitty
 
 ## Install
 
