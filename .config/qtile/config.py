@@ -48,7 +48,6 @@ mod = "mod4"
 
 keys, groups = KeybindManager.get_keybinds()
 screens = ScreenManager.get_two_screens()
-
 layouts = LayoutManager.get_layouts()
 
 widget_defaults = dict(

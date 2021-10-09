@@ -187,7 +187,7 @@ def get_keybinds():
         ),
     ]
 
-    # Idea taken from Augusto Nicola's Dotfiles => https://github.com/AugustoNicola/dotfiles
+        # Idea taken from Augusto Nicola's Dotfiles => https://github.com/AugustoNicola/dotfiles
     group_names = [
         ("SYS", {"label": "ﬦ", "layout": "columns"}),
         ("VER", {"label": "", "layout": "columns"}),
@@ -213,6 +213,8 @@ def get_keybinds():
         )  # Send current window to another group
 
     return keys, groups
+
+
 
 # groups = [Group(i) for i in "123456789"]
 # for i in groups:

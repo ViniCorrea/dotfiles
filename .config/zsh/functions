@@ -16,3 +16,82 @@ function myip {
 	curl -s "$api"
 	echo # Newline.
 }
+
+
+# Efficienty way to copy
+function fastcopy {
+    local source=$1
+    local destination=$2
+    if [[ "$1" == "--help" ]]; then
+        echo "All the files and subfolders are copied from the <source> to the <destination>."
+        echo ""
+        echo "Syntax: fastcopy <source|destination> <destination>"
+        echo ""
+        echo "<source> Source directory to copy. default: ."
+        echo "<destination> Destination directory whre the source will be placed"
+        return 1
+    fi
+
+    if [ -z $2 ]; then
+        source=.
+    fi
+
+    if [ hash rsync 2>/dev/null ]; then
+        # rsync with theses args seems to be faster then copy with tar
+        rsync -avhW --no-compress --progress "$source" "$destination"
+    else
+        # I'm going to keep this code here for a while, in case the system can not have the rsync
+        local sourcedir destinationdir
+        sourcedir=$(basename "$source")
+        destinationdir=$(basename "$destination")
+    
+        if [ "$sourcedir" != "$destinationdir" ]; then
+            mkdir "${destination}/${sourcedir}"
+            destination="${destination}/${sourcedir}"
+        fi
+    
+        # In cp vs tar, tar sometimes has much higher copy speed than cp.
+        # The reason behind that is cp does open-read-close-open-write-close in a loop.
+        # tar does reading and writing in a separate process.
+        # Tar  also uses multiple threads to read and write and can even several files at once.
+        (cd "$source"; tar cf - .) | pv -s $(($(du -sk "$source" | awk '{print $1}') * 1024)) | (cd "$destination"; tar -xpf -)
+    fi
+}
+
+# Extracts any archive(s) (if unp isn't installed)
+function extract () {
+	for archive in $*; do
+		if [ -f $archive ] ; then
+			case $archive in
+				*.tar.bz2)   tar xvjf $archive    ;;
+				*.tar.gz)    tar xvzf $archive    ;;
+				*.bz2)       bunzip2 $archive     ;;
+				*.rar)       rar x $archive       ;;
+				*.gz)        gunzip $archive      ;;
+				*.tar)       tar xvf $archive     ;;
+				*.tbz2)      tar xvjf $archive    ;;
+				*.tgz)       tar xvzf $archive    ;;
+				*.zip)       unzip $archive       ;;
+				*.Z)         uncompress $archive  ;;
+				*.7z)        7z x $archive        ;;
+				*)           echo "don't know how to extract '$archive'..." ;;
+			esac
+		else
+			echo "'$archive' is not a valid file!"
+		fi
+	done
+}
+
+# Show current network information
+function netinfo ()
+{
+	echo "--------------- Network Information ---------------"
+	/sbin/ifconfig | awk /'inet addr/ {print $2}'
+	echo ""
+	/sbin/ifconfig | awk /'Bcast/ {print $3}'
+	echo ""
+	/sbin/ifconfig | awk /'inet addr/ {print $4}'
+
+	/sbin/ifconfig | awk /'HWaddr/ {print $4,$5}'
+	echo "---------------------------------------------------"
+}

@@ -26,5 +26,6 @@ fi
 # Other shell options
 setopt autocd # assume "cd" when a command is a directory
 
-
 eval "$(starship init zsh)"
+
+neofetch

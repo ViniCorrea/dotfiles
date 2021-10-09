@@ -36,7 +36,7 @@ def widget_left():
 
 def widget_rigth():
     return [
-        widget.Systray(icon_size=16, background=colors[0], padding=5),
+        widget.Systray(icon_size=16, background=colors[0]),
         widget.Spacer(10),
         widget.CheckUpdates(
             update_interval=1800,
