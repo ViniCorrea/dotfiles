@@ -23,6 +23,7 @@ plugins=(
     copyfile
     dirhistory
     history
+    extract
 )
 
 source $ZSH/oh-my-zsh.sh

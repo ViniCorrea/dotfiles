@@ -44,7 +44,7 @@ def widget_rigth():
             display_format="{updates} Updates",
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn(
-                    "kitty -e sudo yay -Syu"
+                    "kitty -e yay -Syu"
                 )
             },
             foreground=colors[3],
