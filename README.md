@@ -9,9 +9,6 @@ For now you need to install all "Todo" manual, in the future I will do the insta
 ## Todo
 Install:
 - Zsh
-- Oh My Zsh
-- Qtile
-- rofi
 - Kitty
 
 ## Install

@@ -1,5 +1,11 @@
+if ! command -v yay &> /dev/null
+then
+    echo "[yay] could not be found"
+    exit
+fi
+yay -Sq --nodiffmenu --noeditmenu --nouseask --nocleanmenu --noupgrademenu awk
 
-git clone --bare git@github.com:ViniCorrea/dotfiles.git $HOME/.cfg
+git clone --bare https://github.com/ViniCorrea/dotfiles.git $HOME/.cfg
 function dotfiles {
    /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
 }
@@ -13,3 +19,10 @@ if [ $? = 0 ]; then
 fi;
 dotfiles checkout
 dotfiles config status.showUntrackedFiles no
+
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc --unattended
+yay -Sq --nodiffmenu --noeditmenu --nouseask --nocleanmenu --noupgrademenu nerd-fonts-complete
+sh -c "$(curl -fsSL https://starship.rs/install.sh)" "" --yes 
+yay -Sq  --nodiffmenu --noeditmenu --nouseask --nocleanmenu --noupgrademenu neofetch rofi kitty xrandr nitrogen
+exec zsh -l
